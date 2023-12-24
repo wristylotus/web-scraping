@@ -1,0 +1,9 @@
+[versions]
+spark = "3.5.0"
+
+[libraries]
+scala-library = { module = "org.scala-lang:scala-library", version = "2.12.18" }
+spark-core = { module = "org.apache.spark:spark-core_2.12", version.ref = "spark" }
+spark-sql = { module = "org.apache.spark:spark-sql_2.12", version.ref = "spark" }
+spark-streaming = { module = "org.apache.spark:spark-streaming_2.12", version.ref = "spark" }
+spark-redis = { module = "com.redislabs:spark-redis_2.12", version = "3.1.0" }
