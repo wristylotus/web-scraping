@@ -1,0 +1,15 @@
+plugins {
+    id 'scala'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}
+
+version '0.1.0'
+
+dependencies {
+    implementation libs.scala.library
+}

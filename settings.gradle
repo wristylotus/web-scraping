@@ -1,0 +1,35 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+    }
+    plugins {
+        id "com.github.johnrengelman.shadow" version "8.1.1"
+        id "com.gradle.enterprise" version "3.15.1"
+    }
+}
+
+plugins {
+    id 'com.gradle.enterprise'
+}
+
+gradleEnterprise {
+    if (System.getenv("CI") != null) {
+        buildScan {
+            publishAlways()
+            termsOfServiceUrl = "https://gradle.com/terms-of-service"
+            termsOfServiceAgree = "yes"
+        }
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'web-scraping'
+
+include('common')
+include('content-processor')

@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: "postgres"
+    image: postgres:13
+    environment:
+      POSTGRES_USER: wristylotus
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: wristylotus
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "wristylotus" ]
+      interval: 5s
+      retries: 5
+    restart: always
+
+  redis:
+    container_name: "redis"
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 30s
+      retries: 50
+    restart: always
+
+volumes:
+  postgres-db-volume:
